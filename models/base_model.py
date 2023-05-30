@@ -13,11 +13,8 @@ class BaseModel:
         self.created_at = datetime.now()
         self.updated_at = self.created_at
 
-    def update(self):
-        self.updated_at = datetime.now()
-
     def save(self):
-        self.update()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """Returns a dictionary representation of an instance."""
