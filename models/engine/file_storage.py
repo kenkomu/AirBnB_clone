@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-class FileStorage that serializes instances to a JSON file and deserializes JSON file to instances
+class FileStorage that serializes instances
 """
 
 import json
@@ -29,6 +29,7 @@ class FileStorage:
                 obj_dict = json.load(file)
                 for key, value in obj_dict.items():
                     class_name, obj_id = key.split(".")
-                    module = __import__('models.' + class_name, fromlist=[class_name])
+                    module = __import__('models.' + class_name,
+                                        fromlist=[class_name])
                     cls = getattr(module, class_name)
                     self.__objects[key] = cls(**value)

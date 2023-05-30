@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """
-class BaseModel that defines all common attributes/methods for other classes:
+class BaseModel that defines
 """
+
 
 import uuid
 from datetime import datetime
 from models import storage
+
 
 class BaseModel:
     def __init__(self, *args, **kwargs):
