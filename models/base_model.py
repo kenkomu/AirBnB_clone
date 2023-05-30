@@ -22,7 +22,3 @@ class BaseModel:
         my_dict["updated_at"] = my_dict["updated_at"].isoformat()
         return my_dict
     
-base_model = BaseModel()
-base_model.save()
-obj_dict = base_model.to_dict()
-print(obj_dict)
