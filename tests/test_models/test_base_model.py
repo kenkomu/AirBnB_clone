@@ -3,7 +3,7 @@
 
 import unittest
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
+from models.__init__ import storage
 
 
 class TestBaseModel(unittest.TestCase):
@@ -11,11 +11,13 @@ class TestBaseModel(unittest.TestCase):
         self.base_model = BaseModel()
 
     def tearDown(self):
-        FileStorage().reset()
+        storage.reset()
 
     def test_save(self):
         self.base_model.save()
-        self.assertIsNotNone(FileStorage().all())
+        objects = storage.all()
+        key = self.base_model.__class__.__name__ + "." + self.base_model.id
+        self.assertIn(key, objects)
 
     def test_to_dict(self):
         base_model_dict = self.base_model.to_dict()
@@ -36,7 +38,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_model_str, str)
         self.assertIn('[BaseModel]', base_model_str)
         self.assertIn(self.base_model.id, base_model_str)
-        self.assertIn(self.base_model.__dict__, base_model_str)
+        self.assertIn(str(self.base_model.__dict__), base_model_str)
 
 
 if __name__ == '__main__':
