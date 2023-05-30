@@ -9,6 +9,7 @@ import time
 import unittest
 import uuid
 
+
 class TestBaseModel(unittest.TestCase):
     """Test cases for BaseModel class"""
     def test_1_instantiation(self):
@@ -17,6 +18,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(bm1, BaseModel)
         self.assertTrue(hasattr(bm1, "id"))
         self.assertIsInstance(bm1.id, str)
+
 
 if __name__ == '__main__':
     unittest.main()
