@@ -26,3 +26,10 @@ class BaseModel:
         my_dict["created_at"] = my_dict["created_at"].isoformat()
         my_dict["updated_at"] = my_dict["updated_at"].isoformat()
         return my_dict
+
+    def __str__(self):
+        return "[{}] ({}) {}".format(
+            type(self).__name__,
+            self.id,
+            self.__dict__
+        )
